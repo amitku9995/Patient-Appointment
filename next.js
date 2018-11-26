@@ -1,10 +1,10 @@
 var config = {
-    apiKey: "AIzaSyBKpRG3Nycwy57Dmgpf334lg0KLjhyk2zs",
-    authDomain: "myfirstweb-5a295.firebaseapp.com",
-    databaseURL: "https://myfirstweb-5a295.firebaseio.com",
-    projectId: "myfirstweb-5a295",
-    storageBucket: "",
-    messagingSenderId: "15515162687"
+    apiKey: "AIzaSyChMzQN74af6PKYlEpBWsinXgqvonmtLzA",
+    authDomain: "miniproject-6e84e.firebaseapp.com",
+    databaseURL: "https://miniproject-6e84e.firebaseio.com",
+    projectId: "miniproject-6e84e",
+    storageBucket: "miniproject-6e84e.appspot.com",
+    messagingSenderId: "310817447988"
   };
   firebase.initializeApp(config);
 
