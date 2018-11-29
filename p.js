@@ -363,7 +363,7 @@ db.collection("patient").add({
 .then(function(docRef) {
 	alert("Thank You, your Appointment is successfully register. ");
     console.log("Document written with ID: ", docRef.id);
-	window.location.href="todayAppointment.html";
+	window.location.href="AssistantDashboard.html";
 	
 })
 .catch(function(error) {
@@ -380,7 +380,7 @@ db.collection("patient").add({
 
 
   
-  
+  var rowvalue;
   function addRowHandlers() {
   var table = document.getElementById("tab");
 
@@ -395,7 +395,10 @@ db.collection("patient").add({
 		  var idn = c.innerHTML;
 		  var ccc = row.getElementsByTagName("td")[2];
 		  var idnn = ccc.innerHTML;
-        
+		  var status123 = row.getElementsByTagName("td")[3];
+		  var status123 = status123.innerHTML;
+		  localStorage.setItem( 'valueupadte', id );
+		  rowvalue=id;
 		if (confirm("Serial Number : " + id+"  "+idn+"  "+idnn)) {
         
 		
@@ -416,10 +419,13 @@ db.collection("patient").add({
 
 })
 	})
+	
 	for(i=0;i<4;i++){
-	row.getElementsByTagName("td")[i].style.background = "green";
+	row.getElementsByTagName("td")[i].style.background = "#3AFF2D";
 	}
-	row.getElementsByTagName("td")[3].innerHTML = "Success"
+	
+	row.getElementsByTagName("td")[3].innerHTML = "Success13"
+	
     } 
 	
 		  
@@ -471,7 +477,11 @@ function assistantLogin(){
 }
 
 
-
+function mar(xmarqvalue){
+	alert("hii");
+	
+	xmarq.innerHTML="<p>Current Patient: "+xmarqvalue+"</p>";
+}
 
 
 
@@ -484,7 +494,7 @@ function assistantLogin(){
 var i=1;
 var d = new Date();
 var y1=document.getElementById("head");
-
+var xmarq=document.getElementById("marq");
 
 var y=document.getElementById("tab");
 var mark=document.getElementById("sp");
@@ -494,11 +504,13 @@ var cdate=document.getElementById("cdate");
 var cshift=document.getElementById("cshift");
 mo=d.getMonth()+1;
 var j=1;
+
 cdate.innerHTML=d.getDate()+"/"+mo+"/"+d.getFullYear();
+
   db.collection("patient").orderBy("time")
     .onSnapshot(function(querySnapshot) {
         querySnapshot.docChanges().forEach(function(change) {
-            if (change.type === "added" || change.type === "modified" ) {
+            if (change.type === "added"  ) {
 				var sft=change.doc.data().shift;
 				var status=change.doc.data().Status;
 				var date=change.doc.data().date.getDate();
@@ -508,7 +520,7 @@ cdate.innerHTML=d.getDate()+"/"+mo+"/"+d.getFullYear();
 				
 				if(date==d.getDate() && month==d.getMonth() && year==d.getFullYear() && sft=="morning" && tm<=13 ){
 				if(status==0){
-				y.innerHTML+="<tr style=background:#0091FF;color:white><td>"+i+++"</td><td>"+change.doc.data().Name+"</td><td>"+change.doc.data().Mobile+"</td><td>Pending!</td></tr>";
+				y.innerHTML+="<tr style=background:#0091FF;color:white><td>"+i+++"</td><td>"+change.doc.data().Name+"</td><td>"+change.doc.data().Mobile+"</td><td><button style='padding: 3px 35px;font-size: 24px;text-align: center;cursor: pointer;outline: none;color: #fff;background-color: #4CAF50;border: none;border-radius: 15px;'>Click</button></td></tr>";
 				var m=document.getElementById("myhead");
 				
 				cshift.innerHTML="Shift : "+sft;
@@ -530,7 +542,7 @@ cdate.innerHTML=d.getDate()+"/"+mo+"/"+d.getFullYear();
 				
 				if(date==d.getDate() && month==d.getMonth() && year==d.getFullYear() && sft=="evening" && tm>13 ){
 					if(status==0){
-				y.innerHTML+="<tr style=background:#324DFF;color:white><td>"+i+++"</td><td>"+change.doc.data().Name+"</td><td>"+change.doc.data().Mobile+"</td><td>Pending!</td></tr>";
+				y.innerHTML+="<tr style=background:#324DFF;color:white><td>"+i+++"</td><td>"+change.doc.data().Name+"</td><td>"+change.doc.data().Mobile+"</td><td><button style='padding: 3px 35px;font-size: 24px;text-align: center;cursor: pointer;outline: none;color: #fff;background-color: #4CAF50;border: none;border-radius: 15px;'>Click</button></td></tr>";
 				var m=document.getElementById("myhead");
 				
 				cshift.innerHTML="Shift : "+sft;
@@ -542,7 +554,7 @@ cdate.innerHTML=d.getDate()+"/"+mo+"/"+d.getFullYear();
 				
 				cshift.innerHTML="Shift : "+sft;
 				y1.innerHTML="Total Number of patients are :  "+--i;
-				
+				xmarq.innerHTML="<p>Current Patient: "+i+"</p>";
 				i++;
 					}
                 }
@@ -551,7 +563,47 @@ cdate.innerHTML=d.getDate()+"/"+mo+"/"+d.getFullYear();
 			
 			
 			
+			
+			
+			
+			if ( change.type === "modified") {
+				//var rowvalue = localStorage['valueupadte'];
+				addRowHandlers();
+				y.deleteRow(rowvalue);
+				var sft=change.doc.data().shift;
+				var status=change.doc.data().Status;
+				var date=change.doc.data().date.getDate();
+				var month=change.doc.data().date.getMonth();
+				var year=change.doc.data().date.getFullYear();
+				var tm=d.getHours();
+				var row123=y.insertRow(rowvalue);
+				row123.style.background = "#3AFF2D";
+				if(date==d.getDate() && month==d.getMonth() && year==d.getFullYear() && sft=="morning" && tm<=13 ){
+				if(status==1){
+				row123.innerHTML+="<tr style=background:#3AFF2D;><td>"+rowvalue+"</td><td>"+change.doc.data().Name+"</td><td>"+change.doc.data().Mobile+"</td><td>Success</td></tr>";
 				
+					}
+					
+				
+                }
+				
+				if(date==d.getDate() && month==d.getMonth() && year==d.getFullYear() && sft=="evening" && tm>13 ){
+					if(status==1){
+				row123.innerHTML+="<tr style=background:#3AFF2D;><td>"+rowvalue+"</td><td>"+change.doc.data().Name+"</td><td>"+change.doc.data().Mobile+"</td><td>Success</td></tr>";
+				
+				
+				xmarq.innerHTML="<p>Current Patient: "+rowvalue+"</p>";
+
+					}
+					
+                }
+				
+				
+            }
+			
+			
+			
+			
 	});
 	});
 	
