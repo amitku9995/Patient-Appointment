@@ -35,6 +35,21 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="com.css">
 <link rel="stylesheet" href="com.css">
+<style>
+
+.blinking{
+    animation:blinkingText 1.2s infinite;
+}
+@keyframes blinkingText{
+    0%{     color: #000;    }
+    49%{    color: red; }
+    50%{    color: green; }
+    99%{    color:yellow;  }
+    100%{   color: #000;    }
+}
+
+</style>
+
 </head>
 
 <body>
@@ -46,7 +61,7 @@
     <aside id="left-panel" class="left-panel" >
         <nav class="navbar navbar-expand-sm navbar-default" >
 
-            <div class="navbar-header">
+            <div class="navbar-header" >
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
@@ -57,19 +72,16 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse" >
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="assistantdashboard.html" style="background-color:#fdecde"> <i class="menu-icon fa fa-dashboard"></i>DASHBOARD </a>
+                        <a href="AssistantDashboard.html" style="background-color:#fdecde"> <i class="menu-icon fa fa-dashboard"></i>DASHBOARD </a>
                     </li>
                     
                    
+                    
                     <li>            
- <a  onclick="document.getElementById('id01').style.display='block'"><i class="menu-icon fa fa-th"></i>APPOINTMENT FORM</a>
+ <a  onclick="document.getElementById('id01').style.display='block'" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-th"></i>APPOINTMENT FORM</a>
 </li>
                       
-                    
-					
-                   
-                   
-                 
+ 
 				</div>
 </nav>
             </div><!-- /.navbar-collapse -->
@@ -90,7 +102,7 @@
                 <div class="col-sm-7">
                     <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
                     <div class="header-left">
-                      <center><h1 style="font-weight: bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mohan Clinic</h1></center>
+                      
                         <div class="form-inline">
                             
                        
@@ -113,7 +125,7 @@
                         <div class="user-menu dropdown-menu">
                             <a class="nav-link" href="assistantprofile.html"><i class="fa fa-user"></i> My Profile</a>
 
-                            <a class="nav-link" href="#"><i class="fa fa-power-off"></i> Logout</a>
+                            <a class="nav-link" href="AssLogin.html"><i class="fa fa-power-off"></i> Logout</a>
                         </div>
                     </div>
 
@@ -124,104 +136,51 @@
 		
         <!-- Header-->
 
-        <div class="breadcrumbs">
-            <div class="col-sm-4">
-                <div class="page-header float-left" style="background-color:#deacfe">
-                    <div class="page-title" >
-                        <strong><h1 style="font-size:22px">Mr. Sohan Singh</h1></strong>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-8">
-                <div class="page-header float-right">
-                    <div class="page-title">
-                        <ol class="breadcrumb text-right">
-                            <li class="active"></li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <marquee  behavior="alternate" class="show blinking" id="marq">
+    <p ><b></b></p>
+</marquee>
 		
 
-  <div class="content mt-3">
+     <h2 id="cdate" align="right" style="color:#0b00ff"></h2>
+  <h2 id="cshift" align="right" style="color:#0b00ff"></h2>
+<h1 id="head" align="center">Loading...</h1>
+ <div class="content mt-3">
             <div class="animated fadeIn">
                 <div class="row">
-
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <strong class="card-title">Patient List</strong>
+                    <div class="col-lg-12">
+                        <div class="card" >
+                            <div class="card-header" style="background-color:#eaabbc">
+                                <strong class="card-title" > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Patient List</strong>
                             </div>
+							
                             <div class="card-body">
-                                <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                                <table class="table" onclick="addRowHandlers()" id="tab">
                                     <thead>
                                         <tr>
-                                            <th>Sr.No</th>
-                                            <th>Name</th>
-                                            <th>Mobile</th>
-                                            <th>Status</th>
+                                            <th scope="col">Sr.No</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Mobile</th>
+                                            <th scope="col">Status</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                              <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                        </tr>
-                                        <tr>
-                                             <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                        </tr>
-                                        <tr>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                        </tr>
-                                        <tr>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                        </tr>
-                                        <tr>
-										  <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            
-                                        </tr>
-                                        <tr>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                        </tr>
-                                        <tr>
-                                           <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                        </tr>
-                                        
-                                    </tbody>
+                                    
                                 </table>
                             </div>
                         </div>
                     </div>
+				
 
+                    
+
+                    
 
                 </div>
             </div><!-- .animated -->
         </div><!-- .content -->
+		
 
 
     </div><!-- /#right-panel -->
-
 	 
 <div id="id01" class="w3-modal">
     <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
@@ -253,7 +212,11 @@
 	  </div>
 	  </div>
     <!-- Right Panel -->
+	<script src="https://www.gstatic.com/firebasejs/5.5.1/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js"></script>
 
+<script src="./p.js"></script>
+<script src="./next.js"></script>
     <script src="vendors/jquery/dist/jquery.min.js"></script>
     <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
     <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -266,24 +229,6 @@
     <script src="vendors/jqvmap/dist/jquery.vmap.min.js"></script>
     <script src="vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
     <script src="vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-	    <script src="vendors/jquery/dist/jquery.min.js"></script>
-    <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
-    <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="assets/js/main.js"></script>
-
-
-    <script src="vendors/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
-    <script src="vendors/jszip/dist/jszip.min.js"></script>
-    <script src="vendors/pdfmake/build/pdfmake.min.js"></script>
-    <script src="vendors/pdfmake/build/vfs_fonts.js"></script>
-    <script src="vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
-    <script src="vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
-    <script src="vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
-    <script src="assets/js/init-scripts/data-table/datatables-init.js"></script>
-
     <script>
         (function($) {
             "use strict";
