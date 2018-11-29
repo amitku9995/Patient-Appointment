@@ -19,7 +19,28 @@
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
 			<!--
 			CSS
+			
 			============================================= -->
+			<style>
+			.show{
+background:red;
+width:48%;
+align :center;
+text-color:black;
+font-size:30px
+}
+.blinking{
+    animation:blinkingText 1.2s infinite;
+}
+@keyframes blinkingText{
+    0%{     color: #000;    }
+    49%{    color: red; }
+    50%{    color: green; }
+    99%{    color:yellow;  }
+    100%{   color: #000;    }
+}
+			</style>
+			
 			<link rel="stylesheet" href="css/linearicons.css">
 			<link rel="stylesheet" href="css/font-awesome.min.css">
 			<link rel="stylesheet" href="css/bootstrap.css">
@@ -31,7 +52,7 @@
 			<link rel="stylesheet" href="css/jquery-ui.css">			
 			<link rel="stylesheet" href="css/main.css">
 		</head>
-		<body>	
+		<body >	
 		  <header id="header">
 	  		<div class="header-top">
 	  			<div class="container">
@@ -60,7 +81,7 @@
 			          <li><a href="departments.html">Departments</a></li>
 			          <li class="menu-has-children"><a href="">Users</a>
 			            <ul>
-			              <li><a href="clogin.html">Doctor Login</a></li>
+			              <li><a href="AssLogin.html">Doctor Login</a></li>
 			              <li><a href="AssLogin.html">Assistant Login</a></li>
 			            </ul>
 			          </li>	
@@ -101,7 +122,10 @@
 							<!--<p class="pt-10 pb-10 text-white">
 								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore magna aliqua.
 							</p>-->
-							<a href="#" class="primary-btn text-uppercase">Get Started</a>
+							
+<marquee class="show" behavior="alternate" >
+<h2  class="show blinking" id="marq" align="center" ><b>Loading...</b></h2>
+</marquee>
 						</div>										
 					</div>
 				</div>					
@@ -584,11 +608,13 @@
 				</div>
 			</footer>
 			<!-- End footer Area -->
+			
 
 			<script src="https://www.gstatic.com/firebasejs/5.5.1/firebase.js"></script>
-			<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js"></script>
-
+			<script src="./newmark.js"></script>
 			<script src="./p.js"></script>
+			
+			
 			<script src="js/vendor/jquery-2.2.4.min.js"></script>
 			<script src="js/popper.min.js"></script>
 			<script src="js/vendor/bootstrap.min.js"></script>			
