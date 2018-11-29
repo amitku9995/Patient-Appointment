@@ -42,7 +42,7 @@ function assistantLogin(){
 				var name=doc.data().Name;
 			localStorage.setItem( 'name', name );
 			localStorage.setItem( 'gender', gender );
-				window.location.href="comp.html";
+				window.location.href="AssistantDashboard.html";
 			}
 			
 				
