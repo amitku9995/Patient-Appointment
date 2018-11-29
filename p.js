@@ -466,7 +466,7 @@ function assistantLogin(){
 					head.innerHTML="Welcome Ms. "+name;
 				}
 				
-				window.open("comp.html");
+				window.open("AssistantDashboard.html");
 			}
 			else{
 				alert("Enter Valid UserName and Password");
